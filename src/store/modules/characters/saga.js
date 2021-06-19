@@ -10,8 +10,6 @@ import { api } from '../../../services/api';
 function* charactersListRequest({ payload }) {
   const { filters } = payload;
 
-  console.log('oi', filters);
-
   try {
     const params = new URLSearchParams();
 
