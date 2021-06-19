@@ -16,13 +16,14 @@ const header = [
   { dataKey: 'birth_year', name: 'Birthdate', flexGrow: 2 },
 ];
 
-const Characters = () => {
+const Characters = ({ history }) => {
   const dispatch = useDispatch();
 
   const [totalResults, setTotalResults] = useState(0);
   const [pageSize, setPageSize] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
   const [listCharacters, setListCharacters] = useState([]);
+  const [listFavorites, setListFavorites] = useState([]);
 
   const {
     charactersList,
@@ -31,11 +32,18 @@ const Characters = () => {
 
   useEffect(() => {
     dispatch(charactersListRequest());
+    const data = localStorage.getItem('listFavorites');
+
+    if (data) {
+      const list = data.split(',');
+      setListFavorites(list);
+    }
   }, []);
 
   useEffect(() => {
     if (Object.keys(charactersList).length > 0) {
       const { count, results } = charactersList;
+
       setTotalResults(count);
       setListCharacters(results);
     }
@@ -64,6 +72,28 @@ const Characters = () => {
     dispatch(charactersListRequest(finalFilters));
   };
 
+  const handleFavorite = value => {
+    const data = localStorage.getItem('listFavorites');
+    let list = value;
+
+    if (data)
+      list = [data, value];
+
+    setListFavorites([...listFavorites, value]);
+    localStorage.setItem('listFavorites', list);
+  };
+
+  const handleRemoveFavorite = value => {
+    const data = listFavorites.filter(item => item !== value);
+    setListFavorites([...data]);
+
+    localStorage.setItem('listFavorites', data);
+  };
+
+  const handleGoTo = () => {
+    history.push('/favorites');
+  };
+
   return (
     <div>
       <Grid className='container'>
@@ -73,6 +103,7 @@ const Characters = () => {
           </Col>
           <Col xs={24} sm={24} md={24}>
             <h2>Characters: {totalResults}</h2>
+            <button onClick={handleGoTo} type='button'>Ver todos </button>
           </Col>
           <Col xs={24} sm={24} md={18} lg={20}>
             <Table
@@ -83,20 +114,25 @@ const Characters = () => {
               loading={charactersLoading}
               hasAction
               flexGrowAction={2}
-              returnAction={() => (
+              returnAction={(rowData => (
                 <div className='icon__container'>
-                  <Tooltip label='Editar'>
-                    <div className='d-inline-block'>
-                      <Icon icon='edit' />
-                    </div>
-                  </Tooltip>
-                  <Tooltip label='Deletar'>
-                    <div className='d-inline-block'>
-                      <Icon icon='trash' />
-                    </div>
-                  </Tooltip>
+                  {listFavorites && (
+                    listFavorites.find(item => item === rowData.name) ? (
+                      <Tooltip label='Remover dos favoritos'>
+                        <div className='d-inline-block'>
+                          <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
+                        </div>
+                      </Tooltip>
+                    ) : (
+                      <Tooltip label='Favoritar'>
+                        <div className='d-inline-block'>
+                          <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
+                        </div>
+                      </Tooltip>
+                    )
+                  )}
                 </div >
-              )} />
+              ))} />
           </Col>
 
           <Col xs={24} sm={24} md={18} lg={20}>
