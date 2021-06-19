@@ -6,12 +6,9 @@ import { Container } from './styles';
 const IconCustom = ({
   icon,
   onClick,
-  spin = false,
-  disabled = false,
-  fontSize,
 }) => (
-  <Container className={disabled ? 'disabled' : ''} fontSize={fontSize}>
-    <Icon icon={icon} onClick={onClick} spin={spin} />
+  <Container>
+    <Icon icon={icon} onClick={onClick} />
   </Container>
 );
 export default IconCustom;

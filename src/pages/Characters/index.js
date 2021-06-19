@@ -20,7 +20,6 @@ const Characters = ({ history }) => {
   const dispatch = useDispatch();
 
   const [totalResults, setTotalResults] = useState(0);
-  const [pageSize, setPageSize] = useState(5);
   const [pageIndex, setPageIndex] = useState(1);
   const [listCharacters, setListCharacters] = useState([]);
   const [listFavorites, setListFavorites] = useState([]);
@@ -55,11 +54,6 @@ const Characters = ({ history }) => {
     };
     dispatch(charactersListRequest(finalFilters));
   }, [pageIndex]);
-
-  const handleChangeLength = dataKey => {
-    setPageIndex(1);
-    setPageSize(dataKey);
-  };
 
   const handleSearch = value => {
     setPageIndex(1);
@@ -138,9 +132,7 @@ const Characters = ({ history }) => {
           <Col xs={24} sm={24} md={18} lg={20}>
             <Pagination
               total={totalResults}
-              displayLength={pageSize}
               onChangePage={setPageIndex}
-              onChangeLength={handleChangeLength}
               activePage={pageIndex}
             />
           </Col>

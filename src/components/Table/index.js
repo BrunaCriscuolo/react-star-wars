@@ -10,9 +10,7 @@ import { Container, Title } from './styles';
 const TableCustom = ({
   label,
   total,
-  color = 'blue',
-  theme,
-  marginBottom = '45px',
+  color,
   data,
   loading,
   header,
@@ -24,8 +22,8 @@ const TableCustom = ({
   const { Column, HeaderCell, Cell } = Table;
 
   return (
-    <Container theme={theme} marginBottom={marginBottom}>
-      <Title color={color} theme={theme}>
+    <Container>
+      <Title color={color}>
         <Grid>
           <Row>
             <Col xs={14} sm={20} md={20} lg={20}>
@@ -48,7 +46,13 @@ const TableCustom = ({
         autoHeight
       >
         {header.map((item, index) => (
-          <Column className={item?.className} key={String(index)} width={item?.width} align={item?.align || 'center'} flexGrow={item?.flexGrow}>
+          <Column
+            className={item?.className}
+            key={String(index)}
+            width={item?.width}
+            align={item?.align || 'center'}
+            flexGrow={item?.flexGrow}
+          >
             <HeaderCell>{item?.name}</HeaderCell>
             <Cell dataKey={item?.dataKey} />
           </Column>

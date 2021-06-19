@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from 'rsuite';
 
-const GridCustom = ({ className, children, fluid }) => (
-  <Grid className={className} fluid={fluid}>
+const GridCustom = ({ children }) => (
+  <Grid>
     {children}
   </Grid>
 );
