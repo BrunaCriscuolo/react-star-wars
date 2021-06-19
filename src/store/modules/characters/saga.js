@@ -10,6 +10,8 @@ import { api } from '../../../services/api';
 function* charactersListRequest({ payload }) {
   const { filters } = payload;
 
+  console.log('oi', filters);
+
   try {
     const params = new URLSearchParams();
 
@@ -18,9 +20,14 @@ function* charactersListRequest({ payload }) {
     if (filters?.search)
       params.append('search', filters.search);
 
-    const { data } = yield call(api.get, `/people/?${params.toString()}`);
+    if (filters?.id) {
+      const { id } = filters;
+      const { data } = yield call(api.get, `/people/${id}`);
+      return yield put(charactersListSuccess(data));
+    }
 
-    yield put(charactersListSuccess(data));
+    const { data } = yield call(api.get, `/people/?${params.toString()}`);
+    return yield put(charactersListSuccess(data));
 
   } catch ({ response }) {
     yield put(charactersListFaliure());

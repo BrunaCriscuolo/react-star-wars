@@ -45,7 +45,7 @@ const Characters = ({ history }) => {
       const { count, results } = charactersList;
 
       setTotalResults(count);
-      setListCharacters(results);
+      setListCharacters(results.map((item, index) => ({ ...item, id: index + 1 })));
     }
   }, [charactersList]);
 
@@ -89,11 +89,6 @@ const Characters = ({ history }) => {
 
     localStorage.setItem('listFavorites', data);
   };
-
-  const handleGoTo = () => {
-    history.push('/favorites');
-  };
-
   return (
     <div>
       <Grid className='container'>
@@ -103,7 +98,7 @@ const Characters = ({ history }) => {
           </Col>
           <Col xs={24} sm={24} md={24}>
             <h2>Characters: {totalResults}</h2>
-            <button onClick={handleGoTo} type='button'>Ver todos </button>
+            <button onClick={() => history.push('/favorites')} type='button'>Ver todos </button>
           </Col>
           <Col xs={24} sm={24} md={18} lg={20}>
             <Table
@@ -131,6 +126,11 @@ const Characters = ({ history }) => {
                       </Tooltip>
                     )
                   )}
+                  <Tooltip label='Visualizar'>
+                    <div className='d-inline-block'>
+                      <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
+                    </div>
+                  </Tooltip>
                 </div >
               ))} />
           </Col>
