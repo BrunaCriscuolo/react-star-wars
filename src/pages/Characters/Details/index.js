@@ -12,7 +12,6 @@ const CharactersDetails = () => {
 
   const {
     charactersList,
-    // charactersLoading
   } = useSelector(({ characters }) => characters);
 
   useEffect(() => {

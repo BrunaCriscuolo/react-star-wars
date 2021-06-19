@@ -16,7 +16,7 @@ const ColCustom = ({
     sm={sm}
     xs={xs}
   >
-    { children}
+    {children}
   </Col >
 );
 export default ColCustom;

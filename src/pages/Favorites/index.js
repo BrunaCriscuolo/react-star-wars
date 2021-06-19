@@ -29,8 +29,9 @@ const Favorites = () => {
 
   const handleRemoveFavorite = value => {
     const data = listFavorites.filter(item => item.name !== value);
-    setListFavorites([...data]);
     const list = data.map(item => item.name);
+
+    setListFavorites([...data]);
     localStorage.setItem('listFavorites', list);
   };
 
@@ -38,9 +39,6 @@ const Favorites = () => {
     <div>
       <Grid className='container'>
         <Row>
-          <Col xs={24} sm={24} md={24}>
-            <h1>teste</h1>
-          </Col>
           <Col xs={24} sm={24} md={18} lg={20}>
             <Table
               label='Dados'

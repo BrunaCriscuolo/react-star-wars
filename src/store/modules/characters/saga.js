@@ -29,15 +29,6 @@ function* charactersListRequest({ payload }) {
 
   } catch ({ response }) {
     yield put(charactersListFaliure());
-
-    const { data } = response;
-
-    if (data && data.status !== 401 && data.status !== 403) {
-      const array = data.errors;
-      for (const [, value] of Object.entries(array)) {
-        console.log(value[0]);
-      }
-    }
   }
 }
 export default all([
