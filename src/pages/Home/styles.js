@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import GlobalStyles from '../../styles/globals';
 
 export const Container = styled.div`
+  background: ${GlobalStyles.colors.black};
   background-image: url(${GlobalStyles.images.backgroundHome});
 
   .home-padding{

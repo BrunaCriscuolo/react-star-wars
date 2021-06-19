@@ -1,8 +1,10 @@
 import React from 'react';
 
+import Navbar from '../../components/Navbar';
+
 const Layout = ({ children }) => (
   <>
-    <p> Aqui vai o navBar </p>
+    <Navbar />
     {children}
     <p> Aqui vai o footer </p>
   </>
