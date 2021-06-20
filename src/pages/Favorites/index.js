@@ -6,6 +6,7 @@ import Col from '../../components/Col';
 import Table from '../../components/Table';
 import Tooltip from '../../components/Tooltip';
 import Icon from '../../components/Icon';
+import Fold from '../../components/Fold';
 
 const header = [
   { dataKey: 'name', name: 'Name', flexGrow: 2 },
@@ -36,28 +37,37 @@ const Favorites = () => {
   };
 
   return (
-    <Grid className='container'>
-      <Row>
-        <Col xs={24} sm={24} md={24}>
-          <Table
-            label='Characters'
-            total={totalResults}
-            data={listFavorites}
-            header={header}
-            hasAction
-            flexGrowAction={2}
-            returnAction={(rowData => (
-              <div className='icon__container'>
-                <Tooltip label='Remover dos favoritos'>
-                  <div className='table__d-inline-block'>
-                    <Icon icon='trash' onClick={() => handleRemoveFavorite(rowData.name)} />
-                  </div>
-                </Tooltip>
-              </div >
-            ))} />
-        </Col>
-      </Row>
-    </Grid>
+    <>
+      <Fold>
+        <Row>
+          <Col xs={24} sm={24} md={24}>
+            <h2>Your favorite characters <br />in one place!</h2>
+          </Col>
+        </Row>
+      </Fold>
+      <Grid className='container'>
+        <Row>
+          <Col xs={24} sm={24} md={24}>
+            <Table
+              label='Characters'
+              total={totalResults}
+              data={listFavorites}
+              header={header}
+              hasAction
+              flexGrowAction={2}
+              returnAction={(rowData => (
+                <div className='icon__container'>
+                  <Tooltip label='Remover dos favoritos'>
+                    <div className='table__d-inline-block'>
+                      <Icon icon='trash' onClick={() => handleRemoveFavorite(rowData.name)} />
+                    </div>
+                  </Tooltip>
+                </div >
+              ))} />
+          </Col>
+        </Row>
+      </Grid>
+    </>
   );
 };
 export default Favorites;
