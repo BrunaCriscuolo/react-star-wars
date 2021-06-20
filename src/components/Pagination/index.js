@@ -16,6 +16,7 @@ const PaginationCustom = ({
         activePage={activePage}
         onChangePage={onChangePage}
         total={total}
+        displayLength={10}
       />
     </Container>
   );

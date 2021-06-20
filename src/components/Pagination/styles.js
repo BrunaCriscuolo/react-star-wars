@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
+import GlobalStyles from '../../styles/globals';
+
+
 export const Container = styled.div`
+  margin-bottom: 2rem;
+
   .rs-table-pagination-page-info, .rs-divider-vertical{
     visibility: hidden;
   }
@@ -10,10 +15,22 @@ export const Container = styled.div`
     background: none;
   }
   .rs-table-pagination-toolbar{
-    background: ${({ theme }) => theme.background_nav};
     padding: 10px 20px;
+    justify-content: flex-end;
   }
-  .rs-picker-subtle .rs-btn:active, .rs-picker-subtle .rs-picker-toggle:active{
-    background-color:${({ theme }) => theme.background_nav};
+
+  .rs-table-pagination-start{
+    display: none;
   }
+
+  ul{
+    li{
+      &.rs-pagination-btn{
+        span{
+          color: ${GlobalStyles.colors.black}
+        }
+      }
+    }
+  }
+
 `;

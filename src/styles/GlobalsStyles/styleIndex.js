@@ -21,6 +21,7 @@ export default createGlobalStyle`
     font-size: 1.2rem;
     line-height: 1.7rem;
     overflow-x: hidden;
+    background: ${GlobalStyles.colors.grayLighter}
   }
   h1, h2{
     font-family: 'Kanit', sans-serif;

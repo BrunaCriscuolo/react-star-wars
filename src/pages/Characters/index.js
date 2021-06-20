@@ -109,9 +109,9 @@ const Characters = ({ history }) => {
       </Fold>
       <Grid className='container'>
         <Row>
-          <Col xs={24} sm={24} md={18} lg={20}>
+          <Col xs={24} sm={24} md={18} lg={24}>
             <Table
-              label='Dados'
+              label='Characters'
               total={totalResults}
               data={listCharacters}
               header={header}
@@ -123,20 +123,20 @@ const Characters = ({ history }) => {
                   {listFavorites && (
                     listFavorites.find(item => item === rowData.name) ? (
                       <Tooltip label='Remover dos favoritos'>
-                        <div className='d-inline-block'>
+                        <div className='table__d-inline-block'>
                           <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
                         </div>
                       </Tooltip>
                     ) : (
                       <Tooltip label='Favoritar'>
-                        <div className='d-inline-block'>
+                        <div className='table__d-inline-block'>
                           <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
                         </div>
                       </Tooltip>
                     )
                   )}
                   <Tooltip label='Visualizar'>
-                    <div className='d-inline-block'>
+                    <div className='table__d-inline-block'>
                       <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
                     </div>
                   </Tooltip>
@@ -144,7 +144,7 @@ const Characters = ({ history }) => {
               ))} />
           </Col>
 
-          <Col xs={24} sm={24} md={18} lg={20}>
+          <Col xs={24} sm={24} md={18} lg={24}>
             <Pagination
               total={totalResults}
               onChangePage={setPageIndex}
