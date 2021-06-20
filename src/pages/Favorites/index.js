@@ -21,12 +21,15 @@ const Favorites = () => {
 
     if (list) {
       list = list.split(',');
-      setTotalResults(list.length);
       setListFavorites(list.map(item => ({
         name: item
       })));
     }
   }, []);
+
+  useEffect(() => {
+    setTotalResults(listFavorites.length);
+  }, [listFavorites]);
 
   const handleRemoveFavorite = value => {
     const data = listFavorites.filter(item => item.name !== value);
