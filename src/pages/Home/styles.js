@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import GlobalStyles from '../../styles/globals';
 
 export const Container = styled.div`
+  background: ${GlobalStyles.colors.black};
   background-image: url(${GlobalStyles.images.backgroundHome});
 
-  .home-padding{
+  .home__padding{
     padding: 0 2rem;
   }
   button{
@@ -22,7 +23,7 @@ export const Container = styled.div`
     .mt-7{
       margin-top: 2.5rem;
     }
-    .home-padding{
+    .home__padding{
       padding: 0 1rem;
     }
   }

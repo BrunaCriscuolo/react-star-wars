@@ -20,15 +20,12 @@ export const ButtonCustom = styled(Button)`
     &:hover,
       &:active,
       &:focus,
-      &.rs-btn-default.rs-btn-loading:active,
       &.rs-btn-default:active:hover,
       &.rs-btn-default.rs-btn-active:hover,
       &.rs-btn-default:active:focus,
       &.rs-btn-default.rs-btn-active:focus,
       &.rs-btn-default:active.focus,
-      &.rs-btn-default.rs-btn-active.focus,
-      &.rs-btn-default.rs-btn-loading:focus,
-      &.rs-btn-primary:not(.rs-btn-disabled):hover{
+      &.rs-btn-default.rs-btn-active.focus,{
         opacity: 0.9;
         color: ${GlobalStyles.colors.black};
         background: ${GlobalStyles.colors.yellowMain};

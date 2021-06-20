@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import GlobalsStyles from '../globals';
+import GlobalStyles from '../globals';
 
 export default createGlobalStyle`
   *{
@@ -20,29 +20,34 @@ export default createGlobalStyle`
     font-weight: 500;
     font-size: 1.2rem;
     line-height: 1.7rem;
-    background: ${GlobalsStyles.colors.black};
     overflow-x: hidden;
   }
   h1{
     font-family: 'Kanit', sans-serif;
     font-size: 3.2rem;
     line-height: 3.7rem;
-    color:${GlobalsStyles.colors.white};
+    color:${GlobalStyles.colors.white};
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
   h3{
-    color:${GlobalsStyles.colors.yellowMain};
+    color:${GlobalStyles.colors.yellowMain};
     font-size: 1.5rem;
     line-height: 2rem;
     text-transform: uppercase;
   }
   p{
-    color:${GlobalsStyles.colors.white};
+    color:${GlobalStyles.colors.white};
     font-size: 1.2rem;
     line-height: 1.7rem;
     font-weight: 300;
     text-align: justify;
+  }
+  span{
+    color:${GlobalStyles.colors.white};
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    font-weight: 300;
   }
   .container{
     display: flex;
