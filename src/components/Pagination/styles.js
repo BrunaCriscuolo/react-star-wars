@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import GlobalStyles from '../../styles/globals';
 
-
 export const Container = styled.div`
   margin-bottom: 2rem;
 
@@ -32,5 +31,4 @@ export const Container = styled.div`
       }
     }
   }
-
 `;

@@ -25,12 +25,12 @@ const TableCustom = ({
       <Title>
         <Grid>
           <Row>
-            <Col xs={15} sm={20} md={20} lg={20}>
+            <Col xs={15} sm={18} md={20} lg={20}>
               <h4>
                 {label}
               </h4>
             </Col>
-            <Col xs={9} sm={4} md={4} lg={4}>
+            <Col xs={9} sm={6} md={4} lg={4}>
               <p>
                 <strong>#{total} results</strong>
               </p>

@@ -7,6 +7,8 @@ import Row from '../../../components/Row';
 import Col from '../../../components/Col';
 import Grid from '../../../components/Grid';
 import Table from '../../../components/Table';
+import Button from '../../../components/Button';
+import Icon from '../../../components/Icon';
 
 import { charactersListRequest } from '../../../store/modules/characters/actions';
 
@@ -16,7 +18,7 @@ const header = [
   { dataKey: 'mass', name: 'Mass (kg)', flexGrow: 2 },
 ];
 
-const CharactersDetails = () => {
+const CharactersDetails = ({ history }) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -56,6 +58,13 @@ const CharactersDetails = () => {
         </Row>
       </Fold>
       <Grid className='container'>
+        <Row>
+          <Col xs={24} sm={24} md={7}>
+            <Button
+              label={(<> <Icon icon='long-arrow-left' /> Return to a previous page</>)}
+              onClick={() => history.push('/characters/')} />
+          </Col>
+        </Row>
         <Row>
           <Col xs={24} sm={24} md={24}>
             <Table
