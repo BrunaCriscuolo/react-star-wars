@@ -43,6 +43,12 @@ export default createGlobalStyle`
     font-weight: 300;
     text-align: justify;
   }
+  span{
+    color:${GlobalStyles.colors.white};
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    font-weight: 300;
+  }
   .container{
     display: flex;
     flex: auto;

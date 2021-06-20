@@ -16,7 +16,7 @@ const Home = ({ history }) => (
   <Container>
     <Grid className='container'>
       <Row>
-        <Col xs={24} sm={24} md={12} className='mt-7 home-padding'>
+        <Col xs={24} sm={24} md={12} className='mt-7 home__padding'>
           <h3>Welcome!</h3>
           <h1>Join the dark side</h1>
           <p>I am your father. Search your feelings, you know it to be true! Join me, and together we can rule the galaxy as father and son. It is the only way.</p>
