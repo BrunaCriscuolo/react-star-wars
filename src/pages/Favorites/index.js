@@ -36,30 +36,28 @@ const Favorites = () => {
   };
 
   return (
-    <div>
-      <Grid className='container'>
-        <Row>
-          <Col xs={24} sm={24} md={18} lg={20}>
-            <Table
-              label='Dados'
-              total={totalResults}
-              data={listFavorites}
-              header={header}
-              hasAction
-              flexGrowAction={2}
-              returnAction={(rowData => (
-                <div className='icon__container'>
-                  <Tooltip label='Remover dos favoritos'>
-                    <div className='table__d-inline-block'>
-                      <Icon icon='trash' onClick={() => handleRemoveFavorite(rowData.name)} />
-                    </div>
-                  </Tooltip>
-                </div >
-              ))} />
-          </Col>
-        </Row>
-      </Grid>
-    </div>
+    <Grid className='container'>
+      <Row>
+        <Col xs={24} sm={24} md={24}>
+          <Table
+            label='Characters'
+            total={totalResults}
+            data={listFavorites}
+            header={header}
+            hasAction
+            flexGrowAction={2}
+            returnAction={(rowData => (
+              <div className='icon__container'>
+                <Tooltip label='Remover dos favoritos'>
+                  <div className='table__d-inline-block'>
+                    <Icon icon='trash' onClick={() => handleRemoveFavorite(rowData.name)} />
+                  </div>
+                </Tooltip>
+              </div >
+            ))} />
+        </Col>
+      </Row>
+    </Grid>
   );
 };
 export default Favorites;
