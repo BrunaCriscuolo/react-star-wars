@@ -33,7 +33,7 @@ $ git clone https://github.com/BrunaCriscuolo/react-star-wars.git
 # Crie um arquivo .env seguindo como modelo o arquivo .env.sample que se encontra dentro do base do projeto
 $ cp .env.sample .env # Unix
 $ copy .env.sample .env # Windows
-# Se prefirir pode fazer isso manualmente apenas entando na base do projeto copiando e colando o arquivo e renomeando ele para .env
+# Se prefirir pode fazer isso manualmente. Entre na base do projeto copie e cole o arquivo (.env.sample) e renomeando ele para .env
 
 # Instalar as dependências
 $ yarn # com yarn
