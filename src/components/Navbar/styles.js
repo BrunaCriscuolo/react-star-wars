@@ -7,7 +7,6 @@ export const Container = styled.div`
     background: ${GlobalStyles.colors.black};
     border-bottom: 5px solid ${GlobalStyles.colors.yellowMain};
     padding: 1rem 1rem;
-    margin-bottom: 2rem;
   }
 
   .rs-navbar-header{

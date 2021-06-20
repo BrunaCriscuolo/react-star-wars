@@ -12,13 +12,3 @@ const IconCustom = ({
   </Container>
 );
 export default IconCustom;
-
-
-
-
-
-
-
-
-
-

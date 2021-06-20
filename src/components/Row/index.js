@@ -1,8 +1,8 @@
 import React from 'react';
 import { Row } from 'rsuite';
 
-const RowCustom = ({ children }) => (
-  <Row>
+const RowCustom = ({ children, className }) => (
+  <Row className={className}>
     {children}
   </Row>
 );

@@ -8,6 +8,10 @@ import Pagination from '../../components/Pagination';
 import Table from '../../components/Table';
 import Tooltip from '../../components/Tooltip';
 import Icon from '../../components/Icon';
+import Fold from '../../components/Fold';
+import Input from '../../components/Input';
+
+import { Container } from './styles';
 
 import { charactersListRequest } from '../../store/modules/characters/actions';
 
@@ -23,6 +27,7 @@ const Characters = ({ history }) => {
   const [pageIndex, setPageIndex] = useState(1);
   const [listCharacters, setListCharacters] = useState([]);
   const [listFavorites, setListFavorites] = useState([]);
+  const [search, setSearch] = useState('');
 
   const {
     charactersList,
@@ -57,6 +62,7 @@ const Characters = ({ history }) => {
 
   const handleSearch = value => {
     setPageIndex(1);
+    setSearch(value);
 
     const finalFilters = {
       search: value,
@@ -84,16 +90,25 @@ const Characters = ({ history }) => {
     localStorage.setItem('listFavorites', data);
   };
   return (
-    <div>
-      <Grid className='container'>
+    <Container>
+      <Fold>
         <Row>
           <Col xs={24} sm={24} md={24}>
-            <input onChange={({ target }) => handleSearch(target.value)} />
+            <h2>Explore all the characters <br />in the galaxy</h2>
           </Col>
-          <Col xs={24} sm={24} md={24}>
-            <h2>Characters: {totalResults}</h2>
-            <button onClick={() => history.push('/favorites')} type='button'>Ver todos </button>
+        </Row>
+        <Row className='character__d-flex'>
+          <Col xs={24} sm={24} md={18} lg={10}>
+            <Input
+              placeholder='Type in character name'
+              value={search}
+              onChange={handleSearch}
+            />
           </Col>
+        </Row>
+      </Fold>
+      <Grid className='container'>
+        <Row>
           <Col xs={24} sm={24} md={18} lg={20}>
             <Table
               label='Dados'
@@ -138,7 +153,7 @@ const Characters = ({ history }) => {
           </Col>
         </Row>
       </Grid>
-    </div>
+    </Container>
   );
 };
 export default Characters;
