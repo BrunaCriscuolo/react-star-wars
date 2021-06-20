@@ -10,7 +10,6 @@ import { Container, Title } from './styles';
 const TableCustom = ({
   label,
   total,
-  color,
   data,
   loading,
   header,
@@ -23,17 +22,17 @@ const TableCustom = ({
 
   return (
     <Container>
-      <Title color={color}>
+      <Title>
         <Grid>
           <Row>
-            <Col xs={14} sm={20} md={20} lg={20}>
-              <h5>
+            <Col xs={15} sm={20} md={20} lg={20}>
+              <h4>
                 {label}
-              </h5>
+              </h4>
             </Col>
-            <Col xs={10} sm={4} md={4} lg={4}>
+            <Col xs={9} sm={4} md={4} lg={4}>
               <p>
-                <strong>Total:</strong> {total}
+                <strong>#{total} results</strong>
               </p>
             </Col>
           </Row>

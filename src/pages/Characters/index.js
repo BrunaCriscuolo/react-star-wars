@@ -8,6 +8,10 @@ import Pagination from '../../components/Pagination';
 import Table from '../../components/Table';
 import Tooltip from '../../components/Tooltip';
 import Icon from '../../components/Icon';
+import Fold from '../../components/Fold';
+import Input from '../../components/Input';
+
+import { Container, Content } from './styles';
 
 import { charactersListRequest } from '../../store/modules/characters/actions';
 
@@ -23,6 +27,7 @@ const Characters = ({ history }) => {
   const [pageIndex, setPageIndex] = useState(1);
   const [listCharacters, setListCharacters] = useState([]);
   const [listFavorites, setListFavorites] = useState([]);
+  const [search, setSearch] = useState('');
 
   const {
     charactersList,
@@ -57,6 +62,7 @@ const Characters = ({ history }) => {
 
   const handleSearch = value => {
     setPageIndex(1);
+    setSearch(value);
 
     const finalFilters = {
       search: value,
@@ -84,61 +90,72 @@ const Characters = ({ history }) => {
     localStorage.setItem('listFavorites', data);
   };
   return (
-    <div>
-      <Grid className='container'>
+    <Container>
+      <Fold>
         <Row>
           <Col xs={24} sm={24} md={24}>
-            <input onChange={({ target }) => handleSearch(target.value)} />
+            <h2>Explore all the characters <br />in the galaxy</h2>
           </Col>
-          <Col xs={24} sm={24} md={24}>
-            <h2>Characters: {totalResults}</h2>
-            <button onClick={() => history.push('/favorites')} type='button'>Ver todos </button>
-          </Col>
-          <Col xs={24} sm={24} md={18} lg={20}>
-            <Table
-              label='Dados'
-              total={totalResults}
-              data={listCharacters}
-              header={header}
-              loading={charactersLoading}
-              hasAction
-              flexGrowAction={2}
-              returnAction={(rowData => (
-                <div className='icon__container'>
-                  {listFavorites && (
-                    listFavorites.find(item => item === rowData.name) ? (
-                      <Tooltip label='Remover dos favoritos'>
-                        <div className='d-inline-block'>
-                          <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
-                        </div>
-                      </Tooltip>
-                    ) : (
-                      <Tooltip label='Favoritar'>
-                        <div className='d-inline-block'>
-                          <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
-                        </div>
-                      </Tooltip>
-                    )
-                  )}
-                  <Tooltip label='Visualizar'>
-                    <div className='d-inline-block'>
-                      <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
-                    </div>
-                  </Tooltip>
-                </div >
-              ))} />
-          </Col>
-
-          <Col xs={24} sm={24} md={18} lg={20}>
-            <Pagination
-              total={totalResults}
-              onChangePage={setPageIndex}
-              activePage={pageIndex}
+        </Row>
+        <Row className='character__d-flex'>
+          <Col xs={24} sm={20} md={10}>
+            <Input
+              placeholder='Type in character name'
+              value={search}
+              onChange={handleSearch}
             />
           </Col>
         </Row>
-      </Grid>
-    </div>
+      </Fold>
+      <Content>
+        <Grid className='container'>
+          <Row>
+            <Col xs={24} sm={24} md={24}>
+              <Table
+                label='Characters'
+                total={totalResults}
+                data={listCharacters}
+                header={header}
+                loading={charactersLoading}
+                hasAction
+                flexGrowAction={2}
+                returnAction={(rowData => (
+                  <div className='icon__container'>
+                    {listFavorites && (
+                      listFavorites.find(item => item === rowData.name) ? (
+                        <Tooltip label='Remover dos favoritos'>
+                          <div className='table__d-inline-block'>
+                            <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
+                          </div>
+                        </Tooltip>
+                      ) : (
+                        <Tooltip label='Favoritar'>
+                          <div className='table__d-inline-block'>
+                            <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
+                          </div>
+                        </Tooltip>
+                      )
+                    )}
+                    <Tooltip label='Visualizar'>
+                      <div className='table__d-inline-block'>
+                        <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
+                      </div>
+                    </Tooltip>
+                  </div >
+                ))} />
+            </Col>
+
+            <Col xs={24} sm={24} md={24}>
+              <Pagination
+                total={totalResults}
+                onChangePage={setPageIndex}
+                activePage={pageIndex}
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </Content>
+    </Container>
   );
 };
 export default Characters;

@@ -50,7 +50,7 @@ const Favorites = () => {
               returnAction={(rowData => (
                 <div className='icon__container'>
                   <Tooltip label='Remover dos favoritos'>
-                    <div className='d-inline-block'>
+                    <div className='table__d-inline-block'>
                       <Icon icon='trash' onClick={() => handleRemoveFavorite(rowData.name)} />
                     </div>
                   </Tooltip>
