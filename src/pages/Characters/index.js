@@ -49,7 +49,8 @@ const Characters = ({ history }) => {
       const { count, results } = charactersList;
 
       setTotalResults(count);
-      setListCharacters(results.map((item, index) => ({ ...item, id: index + 1 })));
+      if (results)
+        setListCharacters(results.map((item, index) => ({ ...item, id: index + 1 })));
     }
   }, [charactersList]);
 
