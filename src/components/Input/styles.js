@@ -10,5 +10,4 @@ export const TextField = styled(Input)`
   width: 100%;
   border: none;
   background: ${GlobalStyles.colors.white};
-}
 `;

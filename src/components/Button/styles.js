@@ -7,11 +7,11 @@ export const ButtonCustom = styled(Button)`
   &.rs-btn{
     border-radius: 12px;
     width: 100%;
-    padding: 13px 0;
     color: ${GlobalStyles.colors.black};
     background: ${GlobalStyles.colors.yellowMain};
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+    padding: 10px;
     font-weight: 500;
     text-transform: uppercase;
   }

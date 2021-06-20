@@ -15,13 +15,6 @@ export const Container = styled.div`
     }
   }
 
-  button{
-    &.rs-btn{
-      font-size: 0.9rem;
-      padding: 10px;
-    }
-  }
-
   @media (min-width: 576px){
     .rs-navbar-default{
       padding: 1rem 2rem;

@@ -11,6 +11,9 @@ export const Container = styled.div`
   }
   button{
     margin: 2rem 0;
+    padding: 13px 0;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
   }
   .mt-7{
     margin-top: 2rem;
