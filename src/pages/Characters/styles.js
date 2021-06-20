@@ -7,3 +7,7 @@ export const Container = styled.div`
     justify-content: center;
   }
 `;
+
+export const Content = styled.div`
+  padding: 0 1rem;
+`;
