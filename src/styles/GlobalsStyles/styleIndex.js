@@ -7,6 +7,10 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  #root{
+    display: flex;
+    flex-direction: column;
+  }
   html, body, #root{
     width: 100%;
     height: 100%;
@@ -61,7 +65,6 @@ export default createGlobalStyle`
     flex: auto;
     flex-direction: column;
     padding: 1rem;
-    min-height: 30%;
   }
 
   @media (min-width: 425px){

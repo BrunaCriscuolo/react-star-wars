@@ -18,6 +18,9 @@ export const Container = styled.div`
   .mt-7{
     margin-top: 2rem;
   }
+  .container{
+    padding: 0;
+  }
 
   @media (min-width: 992px){
     background-size: 100%;
