@@ -60,7 +60,8 @@ export default createGlobalStyle`
     display: flex;
     flex: auto;
     flex-direction: column;
-    width: 100%;
+    padding: 1rem;
+    min-height: 80%;
   }
 
   @media (min-width: 425px){

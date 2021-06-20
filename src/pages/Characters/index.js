@@ -11,7 +11,7 @@ import Icon from '../../components/Icon';
 import Fold from '../../components/Fold';
 import Input from '../../components/Input';
 
-import { Container, Content } from './styles';
+import { Container } from './styles';
 
 import { charactersListRequest } from '../../store/modules/characters/actions';
 
@@ -107,54 +107,52 @@ const Characters = ({ history }) => {
           </Col>
         </Row>
       </Fold>
-      <Content>
-        <Grid className='container'>
-          <Row>
-            <Col xs={24} sm={24} md={24}>
-              <Table
-                label='Characters'
-                total={totalResults}
-                data={listCharacters}
-                header={header}
-                loading={charactersLoading}
-                hasAction
-                flexGrowAction={2}
-                returnAction={(rowData => (
-                  <div className='icon__container'>
-                    {listFavorites && (
-                      listFavorites.find(item => item === rowData.name) ? (
-                        <Tooltip label='Remover dos favoritos'>
-                          <div className='table__d-inline-block'>
-                            <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
-                          </div>
-                        </Tooltip>
-                      ) : (
-                        <Tooltip label='Favoritar'>
-                          <div className='table__d-inline-block'>
-                            <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
-                          </div>
-                        </Tooltip>
-                      )
-                    )}
-                    <Tooltip label='Visualizar'>
-                      <div className='table__d-inline-block'>
-                        <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
-                      </div>
-                    </Tooltip>
-                  </div >
-                ))} />
-            </Col>
+      <Grid className='container'>
+        <Row>
+          <Col xs={24} sm={24} md={24}>
+            <Table
+              label='Characters'
+              total={totalResults}
+              data={listCharacters}
+              header={header}
+              loading={charactersLoading}
+              hasAction
+              flexGrowAction={2}
+              returnAction={(rowData => (
+                <div className='icon__container'>
+                  {listFavorites && (
+                    listFavorites.find(item => item === rowData.name) ? (
+                      <Tooltip label='Remover dos favoritos'>
+                        <div className='table__d-inline-block'>
+                          <Icon icon='heart' onClick={() => handleRemoveFavorite(rowData.name)} />
+                        </div>
+                      </Tooltip>
+                    ) : (
+                      <Tooltip label='Favoritar'>
+                        <div className='table__d-inline-block'>
+                          <Icon icon='heart-o' onClick={() => handleFavorite(rowData.name)} />
+                        </div>
+                      </Tooltip>
+                    )
+                  )}
+                  <Tooltip label='Visualizar'>
+                    <div className='table__d-inline-block'>
+                      <Icon icon='eye' onClick={() => history.push(`/characters/details/${rowData.id}`)} />
+                    </div>
+                  </Tooltip>
+                </div >
+              ))} />
+          </Col>
 
-            <Col xs={24} sm={24} md={24}>
-              <Pagination
-                total={totalResults}
-                onChangePage={setPageIndex}
-                activePage={pageIndex}
-              />
-            </Col>
-          </Row>
-        </Grid>
-      </Content>
+          <Col xs={24} sm={24} md={24}>
+            <Pagination
+              total={totalResults}
+              onChangePage={setPageIndex}
+              activePage={pageIndex}
+            />
+          </Col>
+        </Row>
+      </Grid>
     </Container>
   );
 };
